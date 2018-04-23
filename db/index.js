@@ -18,7 +18,7 @@ const selectAll = (table) => {
     let sql = "SELECT * FROM " + table + ";"
     con.query(sql, (err, results) => {
       if (err) reject(err);
-      resolve(results[0]);
+      resolve(results);
     });
   });
 };

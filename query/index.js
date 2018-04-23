@@ -1,13 +1,22 @@
-import {GraphQLObjectType, GraphQLString, GraphQLList} from 'graphql';
-import {BillingType} from './types';
-import {getAllBillings} from '../resolver/billings'
+import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
+import { BillingType, CompanyType, SubscriberType } from './types';
+import {selectAll} from '../db'
+
 
 const Query = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     billings: {
-      type: BillingType,
-      resolve: () => getAllBillings()
+      type: new GraphQLList(BillingType),
+      resolve: () => selectAll('billing')
+    },
+    companies: {
+      type: new GraphQLList(CompanyType),
+      resolve: () => selectAll('company')
+    },
+    subscribers: {
+      type: new GraphQLList(SubscriberType),
+      resolve: () => selectAll('subscribers')
     }
   }
 });
