@@ -26,7 +26,7 @@ export const selectAll = (table) => {
 };
 
 export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_address, co_postcode, co_city }) => {
-  const id =uuidv1()
+  const id = uuidv1()
   return new Promise((resolve, reject) => {
     const sql = "INSERT INTO company(" +
       "co_id," +
@@ -55,6 +55,35 @@ export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_ad
         co_address: co_address,
         co_postcode: co_postcode,
         co_city: co_city
+      });
+    });
+  });
+}
+
+export const createBilling = ({ bi_address, bi_postcode, bi_city, co_id }) => {
+  const id = uuidv1()
+  return new Promise((resolve, reject) => {
+    const sql = "INSERT INTO billing(" +
+      "bi_id," +
+      "bi_address," +
+      "bi_postcode," +
+      "bi_city," +
+      "co_id" +
+      ") VALUES" +
+      "('" +
+      id + "', '" +
+      bi_address + "','" +
+      bi_postcode + "', '" +
+      bi_city + "', '" +
+      co_id + "');"
+    con.query(sql, (err, results) => {
+      if (err) reject(err);
+      resolve({
+        bi_id: id,
+        bi_address: bi_address,
+        bi_postcode: bi_postcode,
+        bi_city: bi_city,
+        co_id: co_id
       });
     });
   });

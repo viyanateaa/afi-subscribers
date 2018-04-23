@@ -1,8 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
 import { CompanyType, BillingType } from './types';
-import {CreateCompanyInput} from './input';
-
-import { createCompany } from '../db';
+import {CreateCompanyInput, CreateBillingInput} from './input';
+import { createCompany,createBilling } from '../db';
 
 const Mutation = new GraphQLObjectType({
   name: 'RootMutationType',
@@ -15,6 +14,15 @@ const Mutation = new GraphQLObjectType({
         },
       },
       resolve: (_,args)=> createCompany(args.input)
+    },
+    createBilling: {
+      type: BillingType,
+      args: {
+        input: {
+          type: CreateBillingInput
+        },
+      },
+      resolve: (_,args)=> createBilling(args.input)
     },
   }
 });
