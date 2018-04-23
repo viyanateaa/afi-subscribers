@@ -1,4 +1,6 @@
 let mysql = require('mysql');
+const uuidv1 = require('uuid/v1');
+
 
 let con = mysql.createConnection({
   host: "localhost",
@@ -23,9 +25,11 @@ export const selectAll = (table) => {
   });
 };
 
-export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_address, co_postcode, co_city}) => {
+export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_address, co_postcode, co_city }) => {
+  const id =uuidv1()
   return new Promise((resolve, reject) => {
     const sql = "INSERT INTO company(" +
+      "co_id," +
       "co_corporateNumber," +
       "co_name," +
       "co_telephone," +
@@ -33,6 +37,7 @@ export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_ad
       "co_postcode," +
       "co_city) VALUES" +
       "('" +
+      id + "', '" +
       co_corporateNumber + "', '" +
       co_name + "', '" +
       co_telephone + "', '" +
@@ -43,6 +48,7 @@ export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_ad
     con.query(sql, (err, results) => {
       if (err) reject(err);
       resolve({
+        co_id: id,
         co_corporateNumber: co_corporateNumber,
         co_name: co_name,
         co_telephone: co_telephone,
