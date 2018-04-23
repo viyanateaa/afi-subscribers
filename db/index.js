@@ -24,7 +24,6 @@ export const selectAll = (table) => {
 };
 
 export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_address, co_postcode, co_city}) => {
-  console.log(co_city)
   return new Promise((resolve, reject) => {
     const sql = "INSERT INTO company(" +
       "co_corporateNumber," +
@@ -43,8 +42,6 @@ export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_ad
 
     con.query(sql, (err, results) => {
       if (err) reject(err);
-      console.log(err)
-      console.log(results)
       resolve({
         co_corporateNumber: co_corporateNumber,
         co_name: co_name,
