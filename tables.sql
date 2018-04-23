@@ -38,3 +38,5 @@ INSERT INTO company(co_corporateNumber,co_name,co_telephone,co_address, co_postc
 (1344531353,'Travellodge','074 348 34 12','Stigen 12', '071 23', 'Örsköldsvik'),
 (2423450310,'Samsung', '074 745 23 45', 'Motorvägen 23', '09 124', 'Luleå' ),
 (7493342385,'Cool Shit', '034 345 23 53', 'Skidspåret 4', '098 23', 'Kiruna');
+
+INSERT INTO billing(bi_address, bi_postcode,bi_city,co_id) VALUES ('Vägen 1','090 23','Umeå',1);
