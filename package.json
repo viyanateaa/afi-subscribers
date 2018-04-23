@@ -1,0 +1,19 @@
+{
+  "name": "afi-subscribers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viyanateaa/afi-subscribers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viyanateaa/afi-subscribers/issues"
+  },
+  "homepage": "https://github.com/viyanateaa/afi-subscribers#readme"
+}
