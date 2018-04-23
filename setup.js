@@ -6,7 +6,7 @@ let con = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "root",
-  database: "mydb"
+  database: "afi-subscribers"
 });
 
 let queries = fs.readFileSync('./tables.sql').toString().split(';');
