@@ -1,0 +1,5 @@
+mutation {
+  createBilling(input: {bi_address: "adress", bi_postcode: "sdd", bi_city:"city",co_id:"f64f2940-fae4-11e7-8c5f-ef356f279131"}) {
+    bi_id
+  }
+}
