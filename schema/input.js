@@ -29,3 +29,18 @@ export const CreateBillingInput = new GraphQLInputObjectType({
     co_id: { type: GraphQLString }
   }
 });
+
+
+export const CreateSubscriberInput= new GraphQLInputObjectType({
+  name: 'CreateSubscriberInput',
+  description: '...',
+  fields: {
+    su_socialnumber: { type: GraphQLString },
+    su_firstname: { type: GraphQLString },
+    su_lastname: { type: GraphQLString },
+    su_address: { type: GraphQLString },
+    su_postcode: { type: GraphQLString },
+    su_city: { type: GraphQLString },
+    su_subscribtion_number: { type: GraphQLInt }
+  }
+})

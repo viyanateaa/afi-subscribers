@@ -1,11 +1,13 @@
 const express = require('express')
 const expressGraphQL = require('express-graphql')
 import schema from './schema'
+const cors = require('cors')
+
 // Create an express instance
 const app = express()
 
 // Connect with graphql and the graphiql panel
-app.use('/graphql', expressGraphQL({
+app.use('/afi-subscribers',cors(), expressGraphQL({
   schema,
   graphiql: true
 }))

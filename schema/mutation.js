@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql';
-import { CompanyType, BillingType } from './types';
-import {CreateCompanyInput, CreateBillingInput} from './input';
-import { createCompany,createBilling } from '../db';
+import { CompanyType, BillingType, SubscriberType } from './types';
+import { CreateCompanyInput, CreateBillingInput, CreateSubscriberInput } from './input';
+import { createCompany, createBilling, createSubscriber } from '../db';
 
 const Mutation = new GraphQLObjectType({
   name: 'RootMutationType',
@@ -13,7 +13,7 @@ const Mutation = new GraphQLObjectType({
           type: CreateCompanyInput
         },
       },
-      resolve: (_,args)=> createCompany(args.input)
+      resolve: (_, args) => createCompany(args.input)
     },
     createBilling: {
       type: BillingType,
@@ -22,7 +22,17 @@ const Mutation = new GraphQLObjectType({
           type: CreateBillingInput
         },
       },
-      resolve: (_,args)=> createBilling(args.input)
+      resolve: (_, args) => createBilling(args.input)
+    },
+
+    createSubscriber: {
+      type: SubscriberType,
+      args: {
+        input: {
+          type: CreateSubscriberInput
+        },
+      },
+      resolve: (_, args) => createSubscriber(args.input)
     },
   }
 });
