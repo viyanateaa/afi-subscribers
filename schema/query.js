@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
 import { BillingType, CompanyType, SubscriberType } from './types';
-import {selectAll} from '../db'
+import { selectAll,selectSubscriberByID } from '../db'
 
 
 const Query = new GraphQLObjectType({
@@ -17,6 +17,13 @@ const Query = new GraphQLObjectType({
     subscribers: {
       type: new GraphQLList(SubscriberType),
       resolve: () => selectAll('subscribers')
+    },
+    subscribersByID: {
+      type: SubscriberType,
+      args: {
+        id: {type: GraphQLString }
+      },
+      resolve: (_,args) => selectSubscriberByID(args.id)
     }
   }
 });

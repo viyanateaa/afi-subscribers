@@ -25,6 +25,19 @@ export const selectAll = (table) => {
   });
 };
 
+
+export const selectSubscriberByID = (id) => {
+  return new Promise((resolve, reject) => {
+    let sql =  `SELECT * FROM subscribers WHERE su_id = '${id}';`
+    con.query(sql, (err, results) => {
+      if (err) reject(err);
+      resolve(results[0]);
+    });
+  });
+};
+
+
+
 export const createCompany = ({ co_corporateNumber, co_name, co_telephone, co_address, co_postcode, co_city }) => {
   const id = uuidv1()
   return new Promise((resolve, reject) => {
