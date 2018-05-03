@@ -44,3 +44,18 @@ export const CreateSubscriberInput= new GraphQLInputObjectType({
     su_subscribtion_number: { type: GraphQLInt }
   }
 })
+
+export const UpdateSubscriberInput= new GraphQLInputObjectType({
+  name: 'UpdateSubscriberInput',
+  description: '...',
+  fields: {
+    su_id: { type: GraphQLString },
+    su_socialnumber: { type: GraphQLString },
+    su_firstname: { type: GraphQLString },
+    su_lastname: { type: GraphQLString },
+    su_address: { type: GraphQLString },
+    su_postcode: { type: GraphQLString },
+    su_city: { type: GraphQLString },
+    su_subscribtion_number: { type: GraphQLInt }
+  }
+})

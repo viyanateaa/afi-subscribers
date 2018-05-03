@@ -28,7 +28,7 @@ export const selectAll = (table) => {
 
 export const selectSubscriberByID = (id) => {
   return new Promise((resolve, reject) => {
-    let sql =  `SELECT * FROM subscribers WHERE su_id = '${id}';`
+    let sql = `SELECT * FROM subscribers WHERE su_id = '${id}';`
     con.query(sql, (err, results) => {
       if (err) reject(err);
       resolve(results[0]);
@@ -139,6 +139,40 @@ export const createSubscriber = ({
       if (err) reject(err);
       resolve({
         su_id: id,
+        su_socialnumber: su_socialnumber,
+        su_firstname: su_firstname,
+        su_lastname: su_lastname,
+        su_address: su_address,
+        su_postcode: su_postcode,
+        su_city: su_city,
+        su_subscribtion_number: su_subscribtion_number,
+      });
+    });
+  });
+}
+
+
+export const updateSubscriber = ({
+  su_id,
+  su_socialnumber,
+  su_firstname,
+  su_lastname,
+  su_address,
+  su_postcode,
+  su_city,
+  su_subscribtion_number
+}) => {
+
+  return new Promise((resolve, reject) => {
+    const sql = `UPDATE subscribers SET su_socialnumber= '${su_socialnumber}',
+    su_firstname= '${su_firstname}', su_lastname= '${su_lastname}',
+    su_address= '${su_address}', su_postcode= '${su_postcode}',su_city= '${su_city}',
+    su_subscribtion_number= '${su_subscribtion_number}' WHERE su_id= '${su_id}'`
+
+    con.query(sql, (err, results) => {
+      if (err) reject(err);
+      resolve({
+        su_id: su_id,
         su_socialnumber: su_socialnumber,
         su_firstname: su_firstname,
         su_lastname: su_lastname,
